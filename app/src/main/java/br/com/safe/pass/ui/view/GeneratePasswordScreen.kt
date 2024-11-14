@@ -41,6 +41,12 @@ fun GeneratePasswordScreen(
     modifier: Modifier = Modifier
 ) {
     var hash: String by remember { mutableStateOf(value = "") }
+    var uniqueChars by remember { mutableStateOf(value = true) }
+    var lowercase by remember { mutableStateOf(value = true) }
+    var uppercase by remember { mutableStateOf(value = false) }
+    var numbers by remember { mutableStateOf(value = false) }
+    var specialChars by remember { mutableStateOf(value = false) }
+    var length: Int by remember { mutableIntStateOf(value = 0) }
     Column(
         modifier = modifier
             .background(color = Themes.colors.background)
@@ -58,19 +64,37 @@ fun GeneratePasswordScreen(
             modifier = modifier.padding(horizontal = Themes.size.spaceSize16),
             verticalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8),
         ) {
-            var selectedValue: Int by remember { mutableIntStateOf(value = 0) }
-            Title(title = stringResource(id = R.string.include))
-            Item(icon = R.drawable.title, label = R.string.unique_characters)
-            Item(icon = R.drawable.lowercase, label = R.string.lowercase)
-            Item(icon = R.drawable.uppercase, label = R.string.uppercase)
-            Item(icon = R.drawable.numbers, label = R.string.numbers)
-            Item(icon = R.drawable.hash, label = R.string.symbols)
+            Item(
+                icon = R.drawable.title,
+                label = R.string.unique_characters,
+                isChecked = uniqueChars,
+                onCheckedChange = { uniqueChars = it })
+            Item(
+                icon = R.drawable.lowercase,
+                label = R.string.lowercase,
+                isChecked = lowercase,
+                onCheckedChange = { lowercase = it })
+            Item(
+                icon = R.drawable.uppercase,
+                label = R.string.uppercase,
+                isChecked = uppercase,
+                onCheckedChange = { uppercase = it })
+            Item(
+                icon = R.drawable.numbers,
+                label = R.string.numbers,
+                isChecked = numbers,
+                onCheckedChange = { numbers = it })
+            Item(
+                icon = R.drawable.hash,
+                label = R.string.symbols,
+                isChecked = specialChars,
+                onCheckedChange = { specialChars = it })
             DropdownMenu(
-                selectedValue = converterSizePassword(size = selectedValue),
+                selectedValue = converterSizePassword(size = length),
                 isError = false,
                 items = filterFactory,
                 label = stringResource(id = R.string.size_password),
-                onValueChangedEvent = { selectedValue = it }
+                onValueChangedEvent = { length = it }
             )
         }
         Column(
@@ -79,7 +103,14 @@ fun GeneratePasswordScreen(
             Button(
                 label = R.string.generate_password,
                 onClick = {
-                    hash = generatePassword(length =  24, uppercase = true, numbers = true, specialChars = false)
+                    hash = generatePassword(
+                        length = length,
+                        uniqueChars = uniqueChars,
+                        lowercase = lowercase,
+                        uppercase = uppercase,
+                        numbers = numbers,
+                        specialChars = specialChars
+                    )
                 }
             )
             GeneratedPassword(label = hash, modifier = modifier)

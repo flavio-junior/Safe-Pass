@@ -17,8 +17,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import br.com.safe.pass.R
+import br.com.safe.pass.components.factory.filterFactory
 import br.com.safe.pass.components.utils.colorTheme
+import br.com.safe.pass.components.utils.converterSizePasswordToNumber
 import br.com.safe.pass.theme.Themes
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,10 +70,12 @@ fun DropdownMenu(
         ) {
             items.forEach {
                 DropdownMenuItem(
-                    text = { Description(description = stringResource(id = it)) },
+                    text = {
+                        Description(description = stringResource(id = it))
+                    },
                     onClick = {
                         expanded = false
-                        onValueChangedEvent(it)
+                        onValueChangedEvent(converterSizePasswordToNumber(it))
                     },
                 )
             }
@@ -78,13 +83,13 @@ fun DropdownMenu(
     }
 }
 
-//@Composable
-//@Preview(showBackground = true)
-//private fun DropdownMenuScreenPreview() {
-//    DropdownMenu(
-//        selectedValue = "Brazil",
-//        options = filterFactory,
-//        //label = stringResource(id = R.string.filter),
-//        onValueChangedEvent = {}
-//    )
-//}
+@Composable
+@Preview(showBackground = true)
+private fun DropdownMenuScreenPreview() {
+    DropdownMenu(
+        selectedValue = "Brazil",
+        label = stringResource(id = R.string.size_password),
+        items = filterFactory,
+        onValueChangedEvent = {}
+    )
+}

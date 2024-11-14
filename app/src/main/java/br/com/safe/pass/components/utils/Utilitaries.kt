@@ -77,9 +77,19 @@ const val WEIGHT_SIZE = 1f
 @Composable
 fun converterSizePassword(size: Int): String {
     return when (size) {
-        R.string.eight_characters -> stringResource(id = R.string.eight_characters)
-        R.string.sixteen_characters -> stringResource(id = R.string.sixteen_characters)
-        R.string.twenty_four_characters -> stringResource(id = R.string.twenty_four_characters)
-        else -> ""
+        0 -> stringResource(id = R.string.empty_size)
+        8 -> stringResource(id = R.string.eight_characters)
+        16 -> stringResource(id = R.string.sixteen_characters)
+        24 -> stringResource(id = R.string.twenty_four_characters)
+        else -> stringResource(id = R.string.empty_size)
+    }
+}
+
+fun converterSizePasswordToNumber(value: Int): Int {
+    return when (value) {
+        R.string.eight_characters -> 8
+        R.string.sixteen_characters -> 16
+        R.string.twenty_four_characters -> 24
+        else -> 0
     }
 }

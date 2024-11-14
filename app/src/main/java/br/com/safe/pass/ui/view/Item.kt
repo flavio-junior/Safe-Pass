@@ -6,10 +6,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -24,13 +20,13 @@ import br.com.safe.pass.theme.Themes
 fun Item(
     icon: Int,
     label: Int,
-    onClick: () -> Unit = {}
+    isChecked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        var isChecked: Boolean by remember { mutableStateOf(value = true) }
         Icon(painter = painterResource(id = icon), contentDescription = stringResource(id = label))
         Description(
             description = stringResource(id = label),
@@ -39,7 +35,7 @@ fun Item(
         Switch(
             checked = isChecked,
             onCheckedChange = {
-                isChecked = it
+                onCheckedChange(!isChecked)
             },
             colors = SwitchDefaults.colors(
                 checkedThumbColor = Themes.colors.background,
@@ -57,6 +53,7 @@ fun ItemPreview() {
     Item(
         icon = R.drawable.key,
         label = R.string.generate_password,
-        onClick = {}
+        isChecked = true,
+        onCheckedChange = {}
     )
 }

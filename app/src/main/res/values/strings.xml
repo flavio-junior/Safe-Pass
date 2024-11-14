@@ -15,4 +15,5 @@
     <string name="eight_characters">8 caracteres</string>
     <string name="sixteen_characters">16 caracteres</string>
     <string name="twenty_four_characters">24 caracteres</string>
+    <string name="empty_size">""</string>
 </resources>
