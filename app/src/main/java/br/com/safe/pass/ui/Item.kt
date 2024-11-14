@@ -1,18 +1,17 @@
-package br.com.safe.pass.ui.view
+package br.com.safe.pass.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.safe.pass.R
 import br.com.safe.pass.components.ui.Description
+import br.com.safe.pass.components.ui.SimpleIcon
 import br.com.safe.pass.components.utils.WEIGHT_SIZE
 import br.com.safe.pass.theme.Themes
 
@@ -27,7 +26,10 @@ fun Item(
         horizontalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(painter = painterResource(id = icon), contentDescription = stringResource(id = label))
+        SimpleIcon(
+            icon = icon,
+            label = label
+        )
         Description(
             description = stringResource(id = label),
             modifier = Modifier.weight(weight = WEIGHT_SIZE)

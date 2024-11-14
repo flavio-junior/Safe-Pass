@@ -1,4 +1,4 @@
-package br.com.safe.pass.ui.view
+package br.com.safe.pass.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -7,32 +7,27 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.safe.pass.R
 import br.com.safe.pass.components.factory.filterFactory
+import br.com.safe.pass.components.ui.Action
 import br.com.safe.pass.components.ui.Button
-import br.com.safe.pass.components.ui.Description
 import br.com.safe.pass.components.ui.DropdownMenu
 import br.com.safe.pass.components.ui.SubTitle
 import br.com.safe.pass.components.ui.Title
 import br.com.safe.pass.components.utils.WEIGHT_SIZE
 import br.com.safe.pass.components.utils.converterSizePassword
-import br.com.safe.pass.components.utils.onClickable
 import br.com.safe.pass.repository.generatePassword
 import br.com.safe.pass.theme.Themes
 
@@ -64,6 +59,7 @@ fun GeneratePasswordScreen(
             modifier = modifier.padding(horizontal = Themes.size.spaceSize16),
             verticalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8),
         ) {
+            Title(title = stringResource(id = R.string.include))
             Item(
                 icon = R.drawable.title,
                 label = R.string.unique_characters,
@@ -131,34 +127,6 @@ private fun GeneratedPassword(
             .padding(top = Themes.size.spaceSize16)
             .fillMaxWidth(fraction = WEIGHT_SIZE)
     )
-}
-
-@Composable
-private fun Action(
-    modifier: Modifier = Modifier,
-    icon: Int,
-    label: Int,
-    onClick: () -> Unit = {}
-) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8),
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.onClickable(
-            onClick = {
-                onClick()
-            }
-        )
-    ) {
-        Icon(
-            painter = painterResource(id = icon),
-            contentDescription = stringResource(id = label),
-            modifier = modifier.size(size = Themes.size.spaceSize48)
-        )
-        Description(
-            description = stringResource(id = label),
-            modifier = modifier.weight(weight = WEIGHT_SIZE)
-        )
-    }
 }
 
 @Composable

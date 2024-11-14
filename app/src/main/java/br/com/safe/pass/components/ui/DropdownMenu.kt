@@ -62,7 +62,6 @@ fun DropdownMenu(
             shape = RoundedCornerShape(size = Themes.size.spaceSize16),
             textStyle = Themes.typography.description
         )
-
         ExposedDropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
