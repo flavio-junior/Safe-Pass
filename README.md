@@ -46,5 +46,4 @@
   - **` Password length `**
   - **` Copy password `**
  
- ![main-screen.png](https://github.com/flavio-junior/Safe-Pass/blob/master/screenshots/main-screen.png)
-   
+![main-screen](https://github.com/user-attachments/assets/d53c88d8-eacb-45c4-adcd-4777108ea1d8)
