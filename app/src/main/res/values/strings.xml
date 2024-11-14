@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Safe-Pass</string>
+    <string name="app_name">Senha Segura</string>
+    <string name="password_generator">Gerador de Senha</string>
+    <string name="include">Incluir:</string>
+    <string name="unique_characters">Caracteres Únicos</string>
+    <string name="lowercase">Letras Minúsculas</string>
+    <string name="uppercase">Letras Maiúsculas</string>
+    <string name="numbers">Números</string>
+    <string name="symbols">Caracteres Espaciais</string>
+    <string name="length_password">Tamanho da Senha</string>
+    <string name="generate_password">Gerar senha</string>
+    <string name="copy_password">Copiar senha</string>
+    <string name="clean_password">Apagar senha</string>
+    <string name="size_password">Tamanho da senha</string>
+    <string name="eight_characters">8 caracteres</string>
+    <string name="sixteen_characters">16 caracteres</string>
+    <string name="twenty_four_characters">24 caracteres</string>
 </resources>
