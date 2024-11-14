@@ -34,3 +34,17 @@
 ### Tree of Branchs:
 - **Main: ` Default `**
 - **Developer: ` Your Branch `**
+
+
+# Features:
+- **Actions:**
+  - **` Unique characters `**
+  - **` Lowercase `**
+  - **` Uppercase `**
+  - **` Numbers `**
+  - **` Special characters `**
+  - **` Password length `**
+  - **` Copy password `**
+ 
+ ![main-screen.png](https://github.com/flavio-junior/Safe-Pass/blob/master/screenshots/main-screen.png)
+   
