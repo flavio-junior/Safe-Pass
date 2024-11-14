@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import br.com.safe.pass.components.utils.WEIGHT_SIZE
 import br.com.safe.pass.components.utils.onClickable
 import br.com.safe.pass.theme.Themes
@@ -16,14 +18,15 @@ fun Action(
     modifier: Modifier = Modifier,
     icon: Int,
     label: Int,
-    onClick: () -> Unit = {}
+    textToCopy: String
 ) {
+    val clipboardManager = LocalClipboardManager.current
     Row(
         horizontalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8),
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.onClickable(
             onClick = {
-                onClick()
+                clipboardManager.setText(AnnotatedString(textToCopy))
             }
         )
     ) {

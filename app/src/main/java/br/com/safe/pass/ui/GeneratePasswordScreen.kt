@@ -110,7 +110,12 @@ fun GeneratePasswordScreen(
                 }
             )
             GeneratedPassword(label = hash, modifier = modifier)
-            Action(icon = R.drawable.copy, label = R.string.copy_password)
+            Action(
+                icon = R.drawable.copy,
+                label = R.string.copy_password,
+                textToCopy = hash,
+                modifier = modifier.padding(top = Themes.size.spaceSize4)
+            )
         }
     }
 }
@@ -120,13 +125,15 @@ private fun GeneratedPassword(
     modifier: Modifier = Modifier,
     label: String
 ) {
-    SubTitle(
-        subTitle = label,
-        textAlign = TextAlign.Center,
-        modifier = modifier
-            .padding(top = Themes.size.spaceSize16)
-            .fillMaxWidth(fraction = WEIGHT_SIZE)
-    )
+    if (label.isNotEmpty()) {
+        SubTitle(
+            subTitle = label,
+            textAlign = TextAlign.Center,
+            modifier = modifier
+                .padding(top = Themes.size.spaceSize16)
+                .fillMaxWidth(fraction = WEIGHT_SIZE)
+        )
+    }
 }
 
 @Composable
