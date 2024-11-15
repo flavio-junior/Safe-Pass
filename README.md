@@ -8,6 +8,8 @@
   - **` Android Studio `**
   - **` Git `**
   - **` GitHub `**
+- **Polices:**
+  - **[Details](https://github.com/flavio-junior/Safe-Pass/blob/main/polices.md)**
 
 - **Contact Me:**
   - **Name: ` Flávio Júnior `**
@@ -34,7 +36,6 @@
 ### Tree of Branchs:
 - **Main: ` Default `**
 - **Developer: ` Your Branch `**
-
 
 # Features:
 - **Actions:**
