@@ -24,7 +24,7 @@ fun Button(
         modifier = modifier
             .onBorder(
                 onClick = onClick,
-                spaceSize = Themes.size.spaceSize36,
+                spaceSize = Themes.size.spaceSize16,
                 width = Themes.size.spaceSize2,
                 color = Themes.colors.primary
             )

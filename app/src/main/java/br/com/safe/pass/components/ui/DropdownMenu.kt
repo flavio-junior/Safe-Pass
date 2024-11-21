@@ -60,7 +60,7 @@ fun DropdownMenu(
                 .menuAnchor()
                 .fillMaxWidth(),
             shape = RoundedCornerShape(size = Themes.size.spaceSize16),
-            textStyle = Themes.typography.description
+            textStyle = Themes.typography.description.copy(color = Themes.colors.primary)
         )
         ExposedDropdownMenu(
             expanded = expanded,

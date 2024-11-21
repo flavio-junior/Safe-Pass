@@ -1,12 +1,12 @@
-package br.com.safe.pass.ui
+package br.com.safe.pass.ui.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -24,7 +25,6 @@ import br.com.safe.pass.components.factory.filterFactory
 import br.com.safe.pass.components.ui.Action
 import br.com.safe.pass.components.ui.Button
 import br.com.safe.pass.components.ui.DropdownMenu
-import br.com.safe.pass.components.ui.SubTitle
 import br.com.safe.pass.components.ui.Title
 import br.com.safe.pass.components.utils.WEIGHT_SIZE
 import br.com.safe.pass.components.utils.converterSizePassword
@@ -41,24 +41,24 @@ fun GeneratePasswordScreen(
     var uppercase by remember { mutableStateOf(value = false) }
     var numbers by remember { mutableStateOf(value = false) }
     var specialChars by remember { mutableStateOf(value = false) }
-    var length: Int by remember { mutableIntStateOf(value = 0) }
+    var length: Int by remember { mutableIntStateOf(value = 8) }
     Column(
         modifier = modifier
             .background(color = Themes.colors.background)
             .fillMaxSize()
+            .padding(horizontal = Themes.size.spaceSize36)
             .verticalScroll(state = rememberScrollState())
     ) {
-        Row(modifier = modifier.padding(all = Themes.size.spaceSize16)) {
-            Title(
-                modifier = modifier.weight(weight = WEIGHT_SIZE),
-                title = stringResource(id = R.string.password_generator),
-                textAlign = TextAlign.Center
-            )
-        }
+        Title(
+            modifier = modifier
+                .padding(top = Themes.size.spaceSize24)
+                .fillMaxWidth(),
+            title = stringResource(id = R.string.password_generator),
+            textAlign = TextAlign.Center
+        )
         Column(
-            modifier = modifier.padding(horizontal = Themes.size.spaceSize16),
-            verticalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8),
-        ) {
+            modifier = modifier.weight(weight = WEIGHT_SIZE),
+            verticalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8)) {
             Title(title = stringResource(id = R.string.include))
             Item(
                 icon = R.drawable.title,
@@ -92,10 +92,6 @@ fun GeneratePasswordScreen(
                 label = stringResource(id = R.string.size_password),
                 onValueChangedEvent = { length = it }
             )
-        }
-        Column(
-            modifier = modifier.padding(all = Themes.size.spaceSize16)
-        ) {
             Button(
                 label = R.string.generate_password,
                 onClick = {
@@ -107,31 +103,33 @@ fun GeneratePasswordScreen(
                         numbers = numbers,
                         specialChars = specialChars
                     )
-                }
+                },
+                modifier = modifier.padding(top = Themes.size.spaceSize16)
             )
-            GeneratedPassword(label = hash, modifier = modifier)
-            Action(
-                icon = R.drawable.copy,
-                label = R.string.copy_password,
-                textToCopy = hash,
-                modifier = modifier.padding(top = Themes.size.spaceSize4)
-            )
+            GeneratedPassword(hash = hash, modifier = modifier)
         }
+        Version(modifier = Modifier.wrapContentHeight(Alignment.Bottom))
     }
 }
 
 @Composable
 private fun GeneratedPassword(
     modifier: Modifier = Modifier,
-    label: String
+    hash: String
 ) {
-    if (label.isNotEmpty()) {
-        SubTitle(
-            subTitle = label,
+    if (hash.isNotEmpty()) {
+        Title(
+            title = hash,
             textAlign = TextAlign.Center,
             modifier = modifier
-                .padding(top = Themes.size.spaceSize16)
+                .padding(top = Themes.size.spaceSize8)
                 .fillMaxWidth(fraction = WEIGHT_SIZE)
+        )
+        Action(
+            icon = R.drawable.copy,
+            label = R.string.copy_password,
+            textToCopy = hash,
+            modifier = modifier.padding(top = Themes.size.spaceSize4)
         )
     }
 }

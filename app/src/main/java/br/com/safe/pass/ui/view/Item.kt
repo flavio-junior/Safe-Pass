@@ -1,4 +1,4 @@
-package br.com.safe.pass.ui
+package br.com.safe.pass.ui.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

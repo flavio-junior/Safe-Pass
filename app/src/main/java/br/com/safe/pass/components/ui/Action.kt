@@ -35,8 +35,8 @@ fun Action(
             label = label,
             modifier = modifier.size(size = Themes.size.spaceSize24)
         )
-        Description(
-            description = stringResource(id = label),
+        SubTitle(
+            subTitle = stringResource(id = label),
             modifier = modifier.weight(weight = WEIGHT_SIZE)
         )
     }

@@ -8,7 +8,7 @@
     <string name="numbers">Números</string>
     <string name="symbols">Caracteres Espaciais</string>
     <string name="length_password">Tamanho da Senha</string>
-    <string name="generate_password">Gerar senha</string>
+    <string name="generate_password">Gerar senha aleatória</string>
     <string name="copy_password">Copiar senha</string>
     <string name="clean_password">Apagar senha</string>
     <string name="size_password">Tamanho da senha</string>
@@ -16,4 +16,5 @@
     <string name="sixteen_characters">16 caracteres</string>
     <string name="twenty_four_characters">24 caracteres</string>
     <string name="empty_size">""</string>
+    <string name="version">Versão: %1$s</string>
 </resources>
