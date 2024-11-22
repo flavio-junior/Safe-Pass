@@ -47,7 +47,6 @@ fun GeneratePasswordScreen(
             .background(color = Themes.colors.background)
             .fillMaxSize()
             .padding(horizontal = Themes.size.spaceSize36)
-            .verticalScroll(state = rememberScrollState())
     ) {
         Title(
             modifier = modifier
@@ -57,7 +56,9 @@ fun GeneratePasswordScreen(
             textAlign = TextAlign.Center
         )
         Column(
-            modifier = modifier.weight(weight = WEIGHT_SIZE),
+            modifier = modifier
+                .verticalScroll(state = rememberScrollState())
+                .weight(weight = WEIGHT_SIZE),
             verticalArrangement = Arrangement.spacedBy(space = Themes.size.spaceSize8)) {
             Title(title = stringResource(id = R.string.include))
             Item(
