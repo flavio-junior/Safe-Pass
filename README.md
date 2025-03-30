@@ -48,3 +48,6 @@
   - **` Copy password `**
  
 ![main-screen](https://github.com/user-attachments/assets/d53c88d8-eacb-45c4-adcd-4777108ea1d8)
+
+# External Link:
+ - **[Play Store](https://play.google.com/store/search?q=senha+segura&c=apps&hl=pt_BR&gl=US)**
