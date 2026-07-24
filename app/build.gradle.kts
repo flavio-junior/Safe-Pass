@@ -11,7 +11,7 @@ configure<com.android.build.api.dsl.ApplicationExtension> {
         applicationId = "br.com.safe.pass"
         minSdk = 23
         targetSdk = 37
-        versionCode = 9
+        versionCode = 10
         versionName = "1.1.7"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
