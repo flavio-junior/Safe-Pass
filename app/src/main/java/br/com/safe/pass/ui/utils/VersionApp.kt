@@ -17,7 +17,7 @@ class VersionApp(val context: Context) {
             packageManager.getPackageInfo(packageName, 0)
         }
         return AppVersion(
-            versionName = packageInfo.versionName,
+            versionName = packageInfo.versionName ?: "",
             versionNumber = PackageInfoCompat.getLongVersionCode(packageInfo),
         )
     }
